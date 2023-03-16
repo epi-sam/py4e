@@ -103,3 +103,17 @@ def count_leaf_items_loop(item_list):
             i += 1
 
 count_leaf_items_loop(names)
+
+# simple version
+def is_palindrome(word):
+    """Return True if word is a palindrome, False if not."""
+    return word == word[::-1]
+
+# recursive version, just for fun
+# works from the outside in, until the last string is length 1 (or 0)
+def is_palindrome(word):
+	"""Return True if word is a palindrome, False otherwise"""
+	if len(word) <= 1:
+		return True
+	else:
+		return word[0] == word[-1] and is_palindrome(word[1:-1])
