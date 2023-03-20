@@ -117,3 +117,56 @@ def is_palindrome(word):
 		return True
 	else:
 		return word[0] == word[-1] and is_palindrome(word[1:-1])
+
+
+# Quicksort algorithm
+
+# first get us some random numbers to sort
+import random
+
+def get_random_numbers(length, minimum = 1, maximum = 100):
+    numbers = []
+    for i in range(length):
+          numbers.append(random.randint(minimum, maximum))
+    
+    return numbers
+
+num_rand = get_random_numbers(20)
+num_rand
+
+# define quicksort algorithm
+
+import statistics as stat
+
+def quicksort(numbers):
+     
+     if len(numbers) <= 1:
+          return numbers
+     else:
+          print("numbers = ", numbers)
+          pivot = stat.median(
+               [
+               numbers[0],
+               numbers[len(numbers) // 2],
+               numbers[-1]
+               ]
+          )
+          print("pivot = ", pivot)
+
+          items_less, pivot_items, items_greater = (
+               [n for n in numbers if n < pivot],
+               [n for n in numbers if n == pivot],
+               [n for n in numbers if n > pivot]
+          )
+          print("less = ", items_less)
+          print("pivot_items = ", pivot_items)
+          print("greater = ", items_greater)
+
+          return(
+               quicksort(items_less) +
+               pivot_items +
+               quicksort(items_greater)
+          )
+
+
+quicksort(num_rand)
