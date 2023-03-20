@@ -9,6 +9,8 @@ ctx.verify_mode = ssl.CERT_NONE
 
 # open url handle
 url = input("Enter - ")
+if len(url) == 0:
+    url = "http://py4e-data.dr-chuck.net/comments_1729108.html"
 html = urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, "html.parser")
 
